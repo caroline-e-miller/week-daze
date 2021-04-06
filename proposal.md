@@ -2,7 +2,7 @@
 
 
 ## Description
-This application serves as a one-stop shop to track where you are with the job search. 
+This application serves as a one-stop shop to track where you are with the job search. We will be implementing mySQL with a job process database of a user table and a table of job leads.
 
 
 ## User Story
@@ -16,7 +16,7 @@ THEN I am shown my list of jobs and graphical data
 
 GIVEN I am a user
 WHEN I click on add job
-THEN I can add what company, what position, which link, and with who I applied
+THEN I can add what company, what position, which link you applied, and with who I applied
 
 GIVEN I am a user
 WHEN I click on a job
@@ -63,7 +63,7 @@ Specific Job:
 
 
 ## Rough Breakdown of Tasks
-* Caroline Miller - put (updating job input), post, get, delete, authentication
+* Caroline Miller - put/post/get/delete routes, authentication
 * Payton Whinnery - initial file structure, login (home route login)
 * Rachel Amos - chartjs, modals (add/remove job)
 * Jackie Hodges - dashboard (not yet applied, applied online, rejected, interview, offer, accepted), handlebars specific job page
