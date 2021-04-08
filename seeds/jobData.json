@@ -1,0 +1,12 @@
+[
+    {
+        "job_title": "assistant",
+        "company": "grocer",
+        "status": "submitted"
+    },
+    {
+        "job_title": "owner",
+        "company": "apothecary",
+        "status": "accepted"
+    }
+]
