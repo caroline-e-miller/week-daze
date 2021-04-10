@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Job } = require('../../models');
 
+
 // post a new job
 router.post('/', async (req, res) => {
     try {
