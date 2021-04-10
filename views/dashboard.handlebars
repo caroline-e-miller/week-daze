@@ -17,7 +17,7 @@
             <td>{{company}}</td>
             <td>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Select</option>
+                    <option selected>{{status}}</option>
                     <option value="1">Applied Online</option>
                     <option value="2">Interviewing</option>
                     <option value="3">Rejected</option>
@@ -26,7 +26,7 @@
                     <option value="6">Reject Offer</option>
                 </select>
             </td>
-            <td>04/01/2020</td>
+            <td>{{format_date job_added}}</td>
             <td scope="col"><button>Save</button></td>
         </tr>
         {{/each}}
