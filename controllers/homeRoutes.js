@@ -3,25 +3,11 @@ const { Job, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    try {
-        const jobData = await Job.findAll({
-            // include: [
-            //     {
-            //         model: Job,
-            //         attributes: ['job_title'],
-            //     },
-            // ],
-        });
-
-        const jobs = jobData.map((job) => job.get({ plain: true }));
-
-        res.render('homepage', {
-            jobs,
-            logged_in: req.session.logged_in
-        });
-    } catch (error) {
-        res.status(500).json(error);
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
+        return;
     }
+    res.render('login');
 });
 
 router.get('/job/:id', async (req, res) => {
