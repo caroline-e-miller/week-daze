@@ -10,10 +10,11 @@
         </tr>
     </thead>
     <tbody>
+        {{#each jobs as |job|}}
         <tr>
-            <th scope="row">1</th>
-            <td><a href="#">Junior Developer</a></td>
-            <td>Apple</td>
+            <th scope="row">{{id}}</th>
+            <td><a href="#">{{job_title}}</a></td>
+            <td>{{company}}</td>
             <td>
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Select</option>
@@ -28,23 +29,6 @@
             <td>04/01/2020</td>
             <td scope="col"><button>Save</button></td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td><a href="#">Developer</a></td>
-            <td>Windows</td>
-            <td>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Select</option>
-                    <option value="1">Applied Online</option>
-                    <option value="2">Interviewing</option>
-                    <option value="3">Rejected</option>
-                    <option value="4">Offer Recieved</option>
-                    <option value="5">Accepted Offer</option>
-                    <option value="6">Reject Offer</option>
-                </select>
-            </td>
-            <td>04/01/2020</td>
-            <td scope="col"><button>Save</button></td>
-        </tr>
+        {{/each}}
     </tbody>
 </table>

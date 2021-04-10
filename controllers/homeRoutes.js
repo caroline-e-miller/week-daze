@@ -55,9 +55,19 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
+    try {
+        const jobData = await Job.findAll({});
 
-    res.render('dashboard');
+        const jobs = jobData.map((job) => job.get({ plain: true }));
+
+        res.render('dashboard', {
+            jobs,
+            // logged_in: req.session.logged_in
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
 })
 
 module.exports = router;
