@@ -1,16 +1,16 @@
 const router = require('express').Router();
-const { Job, User } = require('models');
+const { Job, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
         const jobData = await Job.findAll({
-            include: [
-                {
-                    model: Job,
-                    attributes: ['jobTitle'],
-                },
-            ],
+            // include: [
+            //     {
+            //         model: Job,
+            //         attributes: ['job_title'],
+            //     },
+            // ],
         });
 
         const jobs = jobData.map((job) => job.get({ plain: true }));
