@@ -23,7 +23,6 @@ router.put('/:id', async (req, res) => {
         const jobData = await Job.update(req.body, {
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
         res.status(200).json(jobData);
@@ -38,7 +37,6 @@ router.delete('/:id', async (req, res) => {
         const jobData = await Job.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
         res.status(200).json(jobData);
