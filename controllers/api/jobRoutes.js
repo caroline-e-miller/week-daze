@@ -18,11 +18,12 @@ router.post('/', async (req, res) => {
 });
 
 // update job
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const jobData = await Job.update(req.body, {
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
         res.status(200).json(jobData);
