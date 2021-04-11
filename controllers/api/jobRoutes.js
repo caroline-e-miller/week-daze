@@ -40,13 +40,13 @@ router.delete('/:id', async (req, res) => {
                 user_id: req.session.user_id,
             },
         });
+        res.status(200).json(jobData);
 
         if (!jobData) {
             res.status(404).json({ message: 'No job here!' });
             return;
         }
 
-        res.status(200).json(jobData);
     } catch (err) {
         res.status(500).json(err);
     }
