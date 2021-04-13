@@ -17,6 +17,7 @@ Job.init(
     },
     company: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     job_added: {
       type: DataTypes.DATE,
@@ -25,7 +26,7 @@ Job.init(
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
