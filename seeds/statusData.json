@@ -1,20 +1,10 @@
 [
     {
-        "status_option": "Applied Online"
+        "status_option": "Applied Online",
+        "job_id": 1,
+        "user_id":1
     },
     {
-        "status_option": "Interview"
-    },
-    {
-        "status_option": "Offer Recieved"
-    },
-    {
-        "status_option": "Accepted Offer"
-    },
-    {
-        "status_option": "Rejected Offer"
-    },
-    {
-        "status_option": "Rejected"
+        "status_option": "Recieved Offer"
     }
 ]

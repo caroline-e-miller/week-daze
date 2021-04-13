@@ -10,8 +10,11 @@ router.post('/', async (req, res) => {
             status: req.body.status,
             user_id: req.session.user_id,
         });
+        req.session.save(() => {
+            req.session.job_id = jobData.id;
 
-        res.status(200).json(jobData);
+            res.status(200).json(jobData);
+        });
 
     } catch (err) {
         res.status(400).json(err);

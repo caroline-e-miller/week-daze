@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
             date_updated: req.body.date,
             notes: req.body.notes,
             user_id: req.session.user_id,
-            // job_id: 
+            job_id: req.body.job_id
         });
 
         res.status(200).json(statusData);

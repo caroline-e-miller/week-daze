@@ -11,96 +11,23 @@
         </tr>
     </thead>
     <tbody>
+        {{#each statuses as |status|}}
         <tr>
-            <th scope="row">Applied Online</th>
+            <th scope="row">{{status_option}}</th>
             <td>
                 <div class="form-group row">
                     <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
+                        <input class="form-control" type="date" id="{{id}}-date-input">
                     </div>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    <textarea class="form-control" id="{{id}}-Textarea" rows="3"></textarea>
                 </div>
             </td>
         </tr>
-        <tr>
-            <th scope="row">Interview</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">Offer Recieved</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">Accepted Offer</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">Rejected Offer</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">Rejected</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="example-date-input">
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-            </td>
-        </tr>
+        {{/each}}
     </tbody>
 </table>
 
