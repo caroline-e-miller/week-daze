@@ -22,7 +22,10 @@ router.post('/', async (req, res) => {
 // update status
 router.put('/:id', async (req, res) => {
     try {
-        const statusData = await Status.update(req.body, {
+        const statusData = await Status.update({
+            date_updated: req.body.date,
+            notes: req.body.notes,
+        }, {
             where: {
                 id: req.params.id,
             },

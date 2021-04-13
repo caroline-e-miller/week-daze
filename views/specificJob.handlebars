@@ -17,14 +17,17 @@
             <td>
                 <div class="form-group row">
                     <div class="col-10">
-                        <input class="form-control" type="date" id="{{id}}-date-input">
+                        <input class="form-control" type="date" id="{{id}}-date-input" value="{{format_date_for_form date_updated}}">
                     </div>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <textarea class="form-control" id="{{id}}-Textarea" rows="3"></textarea>
+                    <textarea class="form-control" id="{{id}}-Textarea" rows="3" value="{{notes}}"></textarea>
                 </div>
+            </td>
+            <td>
+                <button id="save" status-id="{{id}}">Save</button>
             </td>
         </tr>
         {{/each}}
