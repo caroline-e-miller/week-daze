@@ -30,5 +30,5 @@ const saveStatus = async (event) => {
 };
 
 document
-.querySelector('#save')
+.querySelector('tbody')
 .addEventListener('click', saveStatus);
