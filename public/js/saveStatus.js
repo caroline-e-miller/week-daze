@@ -1,6 +1,9 @@
 const saveStatus = async (event) => {
     event.preventDefault();
 
+    let job_id = document.querySelector('#add-new-status').getAttribute("job-id");
+    console.log(`the job id is ${job_id}`);
+
     const statusId = event.target.getAttribute("status-id");
     console.log(`the status id is ${statusId}`);
 
@@ -18,39 +21,9 @@ const saveStatus = async (event) => {
         });
     
         if (response.ok) {
-          document.location.replace(`/jobs/${statusId}`);
-        } else {
-          alert('Failed update status');
-        }
-      }
-
-};
-
-const addStatus = async (event) => {
-    event.preventDefault();
-
-    const job_id = event.target.getAttribute("job-id");
-    console.log(`the job id is ${job_id}`);
-
-    let status = document.getElementById(`status-input`).value;
-    let date = document.getElementById(`date-input`).value;
-    let notes = document.getElementById(`notes-input`).value;
-
-    console.log(`Status is ${status}, date is ${date}, and note is ${notes}`);
-    console.log(`the notes value is ${notes}`);
-
-    if (status) {
-        // Send the e-mail and password to the server
-        const response = await fetch(`/api/status/`, {
-          method: 'POST',
-          body: JSON.stringify({ status, date, notes, job_id }),
-          headers: { 'Content-Type': 'application/json' },
-        });
-    
-        if (response.ok) {
           document.location.replace(`/jobs/${job_id}`);
         } else {
-          alert('Failed to create new status');
+          alert('Failed update status');
         }
       }
 
@@ -59,7 +32,3 @@ const addStatus = async (event) => {
 document
 .querySelector('#save')
 .addEventListener('click', saveStatus);
-
-document
-.querySelector('#add-new-status')
-.addEventListener('click', addStatus );
