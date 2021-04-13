@@ -24,12 +24,9 @@ Job.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    status_id: {
-      type: DataTypes.INTEGER,
-      reference:{
-        model:'status',
-        key:'id',
-      }
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
