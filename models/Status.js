@@ -20,13 +20,6 @@ Status.init(
       allowNull: true,
       defaultValue: DataTypes.NOW,
     },
-    job_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'job',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,

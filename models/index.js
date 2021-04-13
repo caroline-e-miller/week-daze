@@ -10,12 +10,12 @@ Job.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Job.hasMany(Status, {
-    foreignKey: 'job_id'
+Job.hasOne(Status, {
+    foreignKey: 'status_id'
 });
 
 Status.belongsTo(Job, {
-    foreignKey:'job_id'
+    foreignKey:'status_id'
 })
 
 module.exports = { User, Job, Status };
