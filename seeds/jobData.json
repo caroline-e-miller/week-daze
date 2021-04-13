@@ -2,11 +2,11 @@
     {
         "job_title": "assistant",
         "company": "grocer",
-        "status_id": 1
+        "status": "accepted"
     },
     {
         "job_title": "owner",
         "company": "apothecary",
-        "status_id": 2
+        "status": "interviewing"
     }
 ]
