@@ -7,7 +7,7 @@ const saveStatus = async (event) => {
     let notes = document.getElementById(`${statusId}-Textarea`).value;
     let date = document.getElementById(`${statusId}-date-input`).value;
 
-    console.log(`the date value is ${date}`);
+    console.log(`the notes value is ${notes}`);
 
     if (date || notes) {
         // Send the e-mail and password to the server

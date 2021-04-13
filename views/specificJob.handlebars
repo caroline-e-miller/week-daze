@@ -6,7 +6,8 @@
         <tr>
             <th scope="col">Status</th>
             <th scope="col">Date</th>
-            <th scope="col">Notes</th>
+            <th scope="col">Existing Notes</th>
+            <th scope="col">New Notes</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -17,13 +18,17 @@
             <td>
                 <div class="form-group row">
                     <div class="col-10">
-                        <input class="form-control" type="date" id="{{id}}-date-input" value="{{format_date_for_form date_updated}}">
+                        <input class="form-control" type="date" id="{{id}}-date-input"
+                            value="{{format_date_for_form date_updated}}">
                     </div>
                 </div>
             </td>
             <td>
+                <div id="enteredText">{{notes}}</div>
+            </td>
+            <td>
                 <div class="form-group">
-                    <textarea class="form-control" id="{{id}}-Textarea" rows="3" value="{{notes}}"></textarea>
+                    <textarea class="form-control" id="{{id}}-Textarea" rows="3"></textarea>
                 </div>
             </td>
             <td>
