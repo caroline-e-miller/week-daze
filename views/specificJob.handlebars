@@ -4,7 +4,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">[]</th>
             <th scope="col">Status</th>
             <th scope="col">Date</th>
             <th scope="col">Notes</th>
@@ -13,25 +12,31 @@
         </tr>
     </thead>
     <tbody>
-        {{#each jobs as |job|}}
         <tr>
-            <th scope="row">{{id}}</th>
-            <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
-            <td>{{company}}</td>
+            <th scope="row">Applied Online</th>
             <td>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>{{status}}</option>
-                    <option value="1">Applied Online</option>
-                    <option value="2">Interviewing</option>
-                    <option value="3">Rejected</option>
-                    <option value="4">Offer Recieved</option>
-                    <option value="5">Accepted Offer</option>
-                    <option value="6">Reject Offer</option>
-                </select>
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                    </div>
+                </div>
             </td>
-            <td>{{format_date job_added}}</td>
-            <td scope="col"><button>Save</button></td>
         </tr>
-        {{/each}}
+        <tr>
+            <th scope="row">Interview</th>
+        </tr>
+        <tr>
+            <th scope="row">Offer Recieved</th>
+        </tr>
+        <tr>
+            <th scope="row">Accepted Offer</th>
+        </tr>
+        <tr>
+            <th scope="row">Rejected Offer</th>
+        </tr>
+        <tr>
+            <th scope="row">Rejected</th>
+        </tr>
     </tbody>
 </table>
