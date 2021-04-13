@@ -34,7 +34,7 @@ router.get('/job/:id', async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/job');
+        res.redirect('/dashboard');
         return;
     }
 
@@ -54,7 +54,17 @@ router.get('/dashboard', async (req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
-})
+});
+
+router.get('/newJob', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    }
+
+    res.render('newJob');
+
+});
 
 module.exports = router;
 

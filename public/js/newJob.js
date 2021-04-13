@@ -1,25 +1,14 @@
-const displayNewJobForm = async (event) => {
-    event.preventDefault();
-    console.log("Add job button pushed")
-
-    document.querySelector(".newjob-form").setAttribute("style", "visibility: visible");
-    document.querySelector("#new-job-button").setAttribute("style", "visibility: hidden");
-
-    document
-    .querySelector('.btn-form-submit')
-    .addEventListener('click', addNewJob);
-}
-
 const addNewJob = async (event) => {
     event.preventDefault();
     const title = document.querySelector('#job-title-input').value.trim();
     const company = document.querySelector('#company-input').value.trim();
+    const status = document.querySelector('#status-input').value.trim();
   
-    if (title && company) {
+    if (title && company && status) {
         // Send the e-mail and password to the server
-        const response = await fetch('/api/jobs', {
+        const response = await fetch('/api/jobs/', {
           method: 'POST',
-          body: JSON.stringify({ title, company }),
+          body: JSON.stringify({ title, company, status }),
           headers: { 'Content-Type': 'application/json' },
         });
     
@@ -32,5 +21,5 @@ const addNewJob = async (event) => {
 }
 
 document
-.querySelector('#new-job-button')
-.addEventListener('click', displayNewJobForm);
+.querySelector('.btn-form-submit')
+.addEventListener('click', addNewJob);
