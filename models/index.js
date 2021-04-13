@@ -1,5 +1,6 @@
 const User = require('./User');
 const Job = require('./Job');
+const Status = require('./Status');
 
 User.hasMany(Job, {
     foreignKey: 'user_id',
@@ -9,4 +10,12 @@ Job.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Job };
+Status.belongsTo(Job, {
+    foreignKey: 'job_id'
+});
+
+Job.hasMany(Status, {
+    foreignKey:"job_id"
+});
+
+module.exports = { User, Job, Status };

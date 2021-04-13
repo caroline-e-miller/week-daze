@@ -1,0 +1,20 @@
+[
+    {
+        "status_option": "Applied Online"
+    },
+    {
+        "status_option": "Interview"
+    },
+    {
+        "status_option": "Offer Recieved"
+    },
+    {
+        "status_option": "Accepted Offer"
+    },
+    {
+        "status_option": "Rejected Offer"
+    },
+    {
+        "status_option": "Rejected"
+    }
+]
