@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 });
 
 // update job
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const jobData = await Job.update(req.body, {
             where: {
@@ -37,16 +37,15 @@ router.delete('/:id', async (req, res) => {
         const jobData = await Job.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
+        res.status(200).json(jobData);
 
         if (!jobData) {
             res.status(404).json({ message: 'No job here!' });
             return;
         }
 
-        res.status(200).json(jobData);
     } catch (err) {
         res.status(500).json(err);
     }
