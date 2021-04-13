@@ -56,5 +56,26 @@ router.get('/dashboard', async (req, res) => {
     }
 })
 
+router.get('/jobs/:id', withAuth, async (req, res) => {
+    try {
+      const jobData = await Job.findByPk(req.params.id, {
+        include: [{
+          model: User
+        }],
+      });
+  
+      const job = jobData.get({ plain: true });
+      console.log(job);
+  
+      res.render('specificJob', {
+        ...job,
+        logged_in: req.session.logged_in
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
+
 module.exports = router;
 
