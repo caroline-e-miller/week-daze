@@ -1,63 +1,78 @@
-<h1>{{job_title}}</h1>
-<h2>{{company}}</h2>
+<div class="row g-6">
+    <div class="col-md-6">
+        <div class="card loginBox">
+            <div class="card-body">
+                <h2 class="card-title">{{job_title}}</h1>
+                    <h4 class="card-subtitle mb-2 text-muted">{{company}}</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Status</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Existing Notes</th>
+                                <th scope="col">New Notes</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each statuses as |status|}}
+                            <tr>
+                                <th scope="row">{{status_option}}</th>
+                                <td>
+                                    <div class="form-group row">
+                                        <div class="col-10">
+                                            <input class="form-control" type="date" id="{{id}}-date-input"
+                                                value="{{format_date_for_form date_updated}}">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="enteredText">{{notes}}</div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="{{id}}-Textarea" rows="3"></textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-dark" id="save" status-id="{{id}}">Save</button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Status</th>
-            <th scope="col">Date</th>
-            <th scope="col">Existing Notes</th>
-            <th scope="col">New Notes</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each statuses as |status|}}
-        <tr>
-            <th scope="row">{{status_option}}</th>
-            <td>
-                <div class="form-group row">
-                    <div class="col-10">
-                        <input class="form-control" type="date" id="{{id}}-date-input"
-                            value="{{format_date_for_form date_updated}}">
+<div class="row g-6">
+    <div class="col-md-6">
+        <div class="card loginBox">
+            <div class="card-body">
+                <h2 class="card-title">New Status:</h2>
+
+                <form class="form newStatus-form">
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input class="form-input" type="text" id="status-input" />
                     </div>
-                </div>
-            </td>
-            <td>
-                <div id="enteredText">{{notes}}</div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <textarea class="form-control" id="{{id}}-Textarea" rows="3"></textarea>
-                </div>
-            </td>
-            <td>
-                <button id="save" status-id="{{id}}">Save</button>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-
-<form class="form newStatus-form">
-    <h2>New Status:</h2>
-    <div class="form-group">
-        <label for="status">Status:</label>
-        <input class="form-input" type="text" id="status-input" />
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input class="form-input" type="date" id="date-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes:</label>
+                        <textarea class="form-input" type="text" id="notes-input" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-dark" id="add-new-status" job-id="{{id}}">Add New Status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="date">Date:</label>
-        <input class="form-input" type="date" id="date-input" />
-    </div>
-    <div class="form-group">
-        <label for="notes">Notes:</label>
-        <textarea class="form-input" type="text" id="notes-input" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-        <button id="add-new-status" job-id="{{id}}">Add New Status</button>
-    </div>
-</form>
-
+</div>
 <script src="/js/newStatus.js"></script>
 {{#if statuses}}
 <script src="/js/saveStatus.js"></script>
