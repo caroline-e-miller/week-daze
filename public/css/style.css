@@ -1,8 +1,7 @@
-html {
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
+body {
+    background-color: #F3F1D0;
 }
 
-body {
-    background-color: #FDF296;
-}
+.loginBox {
+    background-color: #F8F9FA;
+};
