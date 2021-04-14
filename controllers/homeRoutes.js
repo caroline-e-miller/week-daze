@@ -40,7 +40,10 @@ router.get('/newJob', async (req, res) => {
         return;
     }
 
-    res.render('newJob');
+    res.render('newJob', 
+    {
+        logged_in: true,
+    });
 
 });
 
