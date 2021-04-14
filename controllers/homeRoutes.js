@@ -50,6 +50,7 @@ router.get('/dashboard', async (req, res) => {
         res.render('dashboard', {
             jobs,
             // logged_in: req.session.logged_in
+        
         });
     } catch (error) {
         res.status(500).json(error);

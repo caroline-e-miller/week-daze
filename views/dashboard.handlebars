@@ -1,7 +1,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">[]</th>
+            <th scope="col"></th>
             <th scope="col">Job Title</th>
             <th scope="col">Company</th>
             <th scope="col">Application Status</th>
@@ -10,6 +10,74 @@
         </tr>
     </thead>
     <tbody>
+        <div>
+            <canvas id="myChart" width="400" height="400"></canvas>
+           
+            <script>
+                
+                
+                {{#each jobs}}  
+                var xLabels = "{{this.job_title}}"
+                console.log("this is where job is the x label ", xLabels);
+                var id = {{this.id}}
+                console.log("this is an id ", id);
+                {{/each}}
+                
+                console.log("this is an id ", id);
+                const ctx = document.getElementById('myChart');
+                /*const xLabels = [];*/
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: xLabels,
+                        datasets: [{
+                            label: 'Number of Days since I applied',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                /*getData();
+
+                async function getData() {
+                    /*const response = await fetch('../');
+                    const data = await job
+
+                    const table = data.split('\n').slice(1);
+                    table.forEach(row => {
+                        const columns = row.split(',');
+                        const year = columns[0];
+                        const temp = columns[1];
+                        console.log(year, temp);
+                    });
+                } */
+                
+            </script>
+            
+        </div>
         {{#each jobs as |job|}}
         <tr>
             <th scope="row">{{id}}</th>
