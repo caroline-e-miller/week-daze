@@ -1,7 +1,8 @@
 body {
     background-color: #F3F1D0;
+    background-image: url("https://i.pinimg.com/564x/f9/a0/71/f9a071bd610c4b1bff6c65a4b6e7ed3f.jpg");
 }
 
-.card {
+#card {
     background-color: #F8F9FA;
 };

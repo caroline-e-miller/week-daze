@@ -20,6 +20,7 @@
                             <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
                             <td>{{company}}</td>
                             <td>
+
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>{{status}}</option>
                                     <option value="1">Applied Online</option>
@@ -31,12 +32,14 @@
                                 </select>
                             </td>
                             <td>{{format_date job_added}}</td>
-                            <td scope="col"><button class="btn btn-dark" id={{id}}>Save</button></td>
+                            <td scope="col"><button class="btn btn-dark signUpButton" type="button"
+                                    data-bs-primary="modal" data-bs-target="#staticBackdrop">Save</button></td>
                         </tr>
                         {{/each}}
                     </tbody>
                 </table>
                 <a class="button btn btn-dark" href="/newJob" id="new-job-button">Add New Job</a>
+
             </div>
         </div>
     </div>
