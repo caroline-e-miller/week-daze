@@ -17,6 +17,7 @@ Job.init(
     },
     company: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     job_added: {
       type: DataTypes.DATE,

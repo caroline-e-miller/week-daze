@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Job, User } = require('../models');
+const { Job, User, Status } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -10,31 +10,9 @@ router.get('/', async (req, res) => {
     res.render('login');
 });
 
-router.get('/job/:id', async (req, res) => {
-    try {
-        const jobData = await Job.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
-        });
-
-        const job = jobData.get({ plain: true });
-
-        res.render('project', {
-            ...job,
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/job');
+        res.redirect('/dashboard');
         return;
     }
 
@@ -54,7 +32,41 @@ router.get('/dashboard', async (req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
-})
+});
+
+router.get('/newJob', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    }
+
+    res.render('newJob');
+
+});
+
+router.get('/jobs/:id', withAuth, async (req, res) => {
+    try {
+        const jobData = await Job.findByPk(req.params.id, {
+            include: [{
+                model: User
+            },
+            {
+                model: Status
+            }],
+        });
+
+        const job = jobData.get({ plain: true });
+        console.log(job);
+
+        res.render('specificJob', {
+            ...job,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router;
 
