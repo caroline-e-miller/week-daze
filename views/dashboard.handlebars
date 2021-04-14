@@ -15,15 +15,32 @@
            
             <script>
                 
-                
+                var jobArray = [];
+
                 {{#each jobs}}  
                 var xLabels = "{{this.job_title}}"
+                console.log(xLabels);
+                var chartTable = [];
+                chartTable.push(xLabels);
+                console.log("this is my chartTable: ", chartTable.push(xLabels));
                 console.log("this is where job is the x label ", xLabels);
                 var id = {{this.id}}
                 console.log("this is an id ", id);
                 {{/each}}
                 
-                console.log("this is an id ", id);
+                getChart();
+
+                function getChart (){
+                    var xLabels = "{{this.job_title}}"
+                    let chartArray = [];
+                    for (var i = 0; i < xLabels.length; i++){
+                        chartArray.push(xLabels[i]);
+                    }
+                    console.log("this is my chartArray: ", chartArray);
+                }
+
+                console.log("this is my chartTable outside of each: ",chartTable);
+                /*console.log("this is an id ", id);*/
                 const ctx = document.getElementById('myChart');
                 /*const xLabels = [];*/
                 const myChart = new Chart(ctx, {
@@ -55,11 +72,12 @@
                     options: {
                         scales: {
                             y: {
-                                beginAtZero: true
+                                beginAtZero: false
                             }
                         }
                     }
                 });
+                
                 /*getData();
 
                 async function getData() {
