@@ -1,52 +1,53 @@
 const router = require('express').Router();
-const { Job } = require('../../models');
+const { Status } = require('../../models');
 
-// post a new job
+// post a new status
 router.post('/', async (req, res) => {
     try {
-        const jobData = await Job.create({
-            job_title: req.body.title,
-            company: req.body.company,
-            status: req.body.status,
+        const statusData = await Status.create({
+            status_option: req.body.status,
+            date_updated: req.body.date,
+            notes: req.body.notes,
             user_id: req.session.user_id,
+            job_id: req.body.job_id
         });
-        req.session.save(() => {
-            req.session.job_id = jobData.id;
 
-            res.status(200).json(jobData);
-        });
+        res.status(200).json(statusData);
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// update job
+// update status
 router.put('/:id', async (req, res) => {
     try {
-        const jobData = await Job.update(req.body, {
+        const statusData = await Status.update({
+            date_updated: req.body.date,
+            notes: req.body.notes,
+        }, {
             where: {
                 id: req.params.id,
             },
         });
-        res.status(200).json(jobData);
+        res.status(200).json(statusData);
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// delete a job
+// delete a status
 router.delete('/:id', async (req, res) => {
     try {
-        const jobData = await Job.destroy({
+        const statusData = await Status.destroy({
             where: {
                 id: req.params.id,
             },
         });
-        res.status(200).json(jobData);
+        res.status(200).json(statusData);
 
         if (!jobData) {
-            res.status(404).json({ message: 'No job here!' });
+            res.status(404).json({ message: 'No status here!' });
             return;
         }
 
