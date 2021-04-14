@@ -1,59 +1,38 @@
 <div class="row g-6">
   <div class="col-md-6">
-    <h2>Login</h2>
-    <form class="form login-form">
-      <div class="row g-6">
-        <div class="col-md-6">
-          <label for="email-login">
-            <input type="text" class="form-control" placeholder="Email Address" id="email-login" aria-label="Email Address"></label>
-        </div>
-      </div>
-      <div class="row g-6">
-        <div class="col-md-6">
-          <label for="password-login">
-            <input type="password" class="form-control" placeholder="Password" id="password-login" aria-label="Password"></label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <button class="btn btn-dark" type="submit">login</button>
-        </div>
-      </div>
-    </form>
-    <form class="form signup-form">
-      <div class="col-md-3">
-        <button class="btn btn-dark signUpButton" type="button" data-bs-primary="modal"
-          data-bs-target="#staticBackdrop">Signup</button>
-      </div>
-      <div class="modal fade signUp" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" id="name-signup" placeholder="Name" aria-label="Name">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="email-signup" placeholder="Email Address" aria-label="Email Address">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="password-signup" placeholder="Password" aria-label="Password">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="card loginBox">
+      <div class="card-body">
+        <h2 class="card-title">Login</h2>
+        <form class="form login-form">
+          <div class="row g-6">
+            <div class="col-md-6">
+              <label for="email-login">
+                <input type="text" class="form-control" placeholder="Email Address" id="email-login"
+                  aria-label="Email Address"></label>
             </div>
           </div>
-        </div>
+          <div class="row g-6">
+            <div class="col-md-6">
+              <label for="password-login">
+                <input type="password" class="form-control" placeholder="Password" id="password-login"
+                  aria-label="Password"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <button class="btn btn-dark" type="submit">login</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
-  <script src="./js/login.js"></script>
-    <script src="./js/signup.js"></script>
+  <form class="form signup-form">
+    <div class="col-md-3">
+      <button class="btn btn-dark signUpButton" type="button" data-bs-primary="modal"
+        data-bs-target="#staticBackdrop">Signup</button>
+    </div>
+    {{> signup}}
+  </form>
+</div>
+<script src="./js/login.js"></script>
