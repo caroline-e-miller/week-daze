@@ -7,6 +7,11 @@
     {
         "job_title": "owner",
         "company": "apothecary",
-        "status": "interviewing"
+        "status": "accepted"
+    },
+    {
+        "job_title": "friend",
+        "company": "schitt's creek",
+        "status": "accepted"
     }
 ]
