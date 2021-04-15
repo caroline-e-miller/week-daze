@@ -1,4 +1,8 @@
-<table class="table">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
     <thead>
         <tr>
             <th scope="col"></th>
@@ -73,7 +77,7 @@
         {{#each jobs as |job|}}
         <tr>
             <th scope="row">{{id}}</th>
-            <td><a href="#">{{job_title}}</a></td>
+            <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
             <td>{{company}}</td>
             <td>
                 <select class="form-select" aria-label="Default select example">
@@ -87,8 +91,13 @@
                 </select>
             </td>
             <td>{{format_date job_added}}</td>
-            <td scope="col"><button>Save</button></td>
+            <td scope="col"><button id={{id}}>Save</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+<a class="button" href="/newJob" id="new-job-button">Add New Job</a>
+            </div>
+        </div>
+    </div>
+</div>

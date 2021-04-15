@@ -1,0 +1,14 @@
+[
+    {
+        "status_option": "Applied Online",
+        "date_updated": "1/1/2020",
+        "job_id": 1,
+        "user_id":1
+    },
+    {
+        "status_option": "Applied Online",
+        "date_updated": "2/1/2020",
+        "job_id": 2,
+        "user_id":1    
+    }
+]
