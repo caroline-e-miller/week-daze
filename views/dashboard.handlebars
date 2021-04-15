@@ -18,38 +18,28 @@
                 var jobArray = [];
 
                 {{#each jobs}}  
-                var xLabels = "{{this.job_title}}"
-                console.log(xLabels);
-                var chartTable = [];
-                chartTable.push(xLabels);
-                console.log("this is my chartTable: ", chartTable.push(xLabels));
-                console.log("this is where job is the x label ", xLabels);
-                var id = {{this.id}}
-                console.log("this is an id ", id);
-                {{/each}}
-                
-                getChart();
-
-                function getChart (){
-                    var xLabels = "{{this.job_title}}"
-                    let chartArray = [];
-                    for (var i = 0; i < xLabels.length; i++){
-                        chartArray.push(xLabels[i]);
-                    }
-                    console.log("this is my chartArray: ", chartArray);
+                var jobObj = {
+                    jobTitle: "{{this.job_title}}",
+                    jobStatus: "{{this.status}}",
+                    company: "{{this.company}}",
+                    id: {{this.id}}
                 }
+                jobArray.push(jobObj);
+                {{/each}}
 
-                console.log("this is my chartTable outside of each: ",chartTable);
-                /*console.log("this is an id ", id);*/
+                console.log(jobArray)
+                const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
+                const ids = jobArray.map((jobId) => (jobId.id))
+            
                 const ctx = document.getElementById('myChart');
-                /*const xLabels = [];*/
+
                 const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: xLabels,
+                        labels: jobTitles,
                         datasets: [{
                             label: 'Number of Days since I applied',
-                            data: id,
+                            data: ids,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
@@ -77,22 +67,6 @@
                         }
                     }
                 });
-                
-                /*getData();
-
-                async function getData() {
-                    /*const response = await fetch('../');
-                    const data = await job
-
-                    const table = data.split('\n').slice(1);
-                    table.forEach(row => {
-                        const columns = row.split(',');
-                        const year = columns[0];
-                        const temp = columns[1];
-                        console.log(year, temp);
-                    });
-                } */
-                
             </script>
             
         </div>
