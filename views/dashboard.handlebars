@@ -26,6 +26,7 @@
                     jobTitle: "{{this.job_title}}",
                     jobStatus: "{{this.status}}",
                     company: "{{this.company}}",
+                    dtAdded: "{{this.job_added}}",
                     id: {{this.id}}
                 }
                 jobArray.push(jobObj);
@@ -34,6 +35,8 @@
                 console.log(jobArray)
                 const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
                 const ids = jobArray.map((jobId) => (jobId.id))
+                const datesAdded = jobArray.map((jobD) => (jobD.dtAdded))
+                console.log(datesAdded)
             
                 const ctx = document.getElementById('myChart');
 
@@ -43,7 +46,7 @@
                         labels: jobTitles,
                         datasets: [{
                             label: 'Number of Days since I applied',
-                            data: ids,
+                            data: datesAdded,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
