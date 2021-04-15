@@ -91,12 +91,14 @@
                 </select>
             </td>
             <td>{{format_date job_added}}</td>
-            <td scope="col"><button id={{id}}>Save</button></td>
+            <td scope="col"><button class="btn btn-dark signUpButton" type="button"
+                                    data-bs-primary="modal" data-bs-target="#staticBackdrop">Save</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-<a class="button" href="/newJob" id="new-job-button">Add New Job</a>
+<a class="button btn btn-dark" href="/newJob" id="new-job-button">Add New Job</a>
+
             </div>
         </div>
     </div>
