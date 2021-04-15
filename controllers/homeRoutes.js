@@ -19,9 +19,13 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        const jobData = await Job.findAll({});
+        const jobData = await Job.findAll({
+            where:{
+                user_id: req.session.user_id
+            }
+        });
 
         const jobs = jobData.map((job) => job.get({ plain: true }));
 
@@ -34,7 +38,7 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
-router.get('/newJob', async (req, res) => {
+router.get('/newJob', withAuth, async (req, res) => {
     if (!req.session.logged_in) {
         res.redirect('/login');
         return;
