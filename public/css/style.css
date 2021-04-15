@@ -12,5 +12,10 @@ label {
 }
 
 #dashboardcard {
-    align-items: center;
+    margin-bottom: 30px;
+}
+
+p {
+    text-align: center;
+    padding: 10px;
 }

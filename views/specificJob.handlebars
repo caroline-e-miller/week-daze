@@ -1,3 +1,13 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <p>Welcome to your Milestone Page! We are so happy you are here! Within each job that you have added to your dashboard, you can store all important information or milestones about each job here. We suggest keeping record of salary, when you have job interviews, notes from job interviews and where you are in the process of getting a job in your Milestone Page!</p>
+            </div>
+        </div>
+    </div>
+</div>
+</br>
 <div class="row g-6">
     <div class="col-md-6">
         <div class="card loginBox">
@@ -47,23 +57,26 @@
     <div class="col-md-6">
         <div class="card loginBox">
             <div class="card-body">
-                <h2 class="card-title">New Status:</h2>
+                <h2 class="card-title">New Milestone:</h2>
 
                 <form class="form newStatus-form">
                     <div class="form-group">
-                        <label for="status">Status:</label>
-                        <input class="form-input" type="text" id="status-input" />
+                        <label for="status">
+                        <input class="form-control" placeholder="New Milestone" aria-label="New Status" type="text" id="status-input" />
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input class="form-input" type="date" id="date-input" />
+                        <label for="date">
+                        <input class="form-control" type="date" id="date-input" />
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="notes">Notes:</label>
-                        <textarea class="form-input" type="text" id="notes-input" rows="3"></textarea>
+                        <label for="notes">
+                        <textarea class="form-control" type="text" placeholder="Notes" aria-label="Notes" id="notes-input" rows="3"></textarea>
+                        </label>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-dark" id="add-new-status" job-id="{{id}}">Add New Status</button>
+                        <button class="btn btn-dark" id="add-new-status" job-id="{{id}}">Add New Milestone</button>
                     </div>
                 </form>
             </div>
