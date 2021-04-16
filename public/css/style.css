@@ -5,4 +5,17 @@ body {
 
 #card {
     background-color: #F8F9FA;
-};
+}
+
+label {
+    margin: 10px;
+}
+
+#dashboardcard {
+    margin-bottom: 30px;
+}
+
+p {
+    text-align: center;
+    padding: 10px;
+}
