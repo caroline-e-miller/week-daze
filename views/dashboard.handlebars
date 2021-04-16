@@ -20,6 +20,8 @@
             <script>
                 
                 var jobArray = [];
+                let dtToday = new Date();
+                console.log("this is the date today aka dtToday", dtToday);
 
                 {{#each jobs}}  
                 var jobObj = {
@@ -27,26 +29,35 @@
                     jobStatus: "{{this.status}}",
                     company: "{{this.company}}",
                     dtAdded: "{{this.job_added}}",
-                    id: {{this.id}}
+                    
                 }
                 jobArray.push(jobObj);
                 {{/each}}
-
-                console.log(jobArray)
+                
+                
+                console.log("jobArray", jobArray)
+                let dtAddedOne = jobArray[0].dtAdded;
+                
+                console.log("this is date added for first job", dtAddedOne)
+                let dtAddedArray = new Date(dtAddedOne)
+                console.log("this is dtAddedArry", dtAddedArray)
+                let diffTime = dtToday.getDate() - dtAddedArray.getDate();
+                console.log("this is the difference in days", diffTime)
+            
                 const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
                 const ids = jobArray.map((jobId) => (jobId.id))
-                const datesAdded = jobArray.map((jobD) => (jobD.dtAdded))
-                console.log(datesAdded)
+                {{!-- const dateDiff = jobArray.map((jobD) => (jobD.diffDays)) --}}
+                console.log("dtAdded", dtAdded)
             
                 const ctx = document.getElementById('myChart');
 
                 const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: jobTitles,
+                        labels: dtToday,
                         datasets: [{
                             label: 'Number of Days since I applied',
-                            data: datesAdded,
+                            data: jobTitles,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
