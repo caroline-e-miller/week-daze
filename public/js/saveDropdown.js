@@ -20,6 +20,7 @@ const saveDropdown = async (event) => {
         }
     }
 };
+
 // console.log(document.getAttribute('.saveButton'));
 let saveButtonDOMs = document.querySelectorAll('.saveButton')
 for (let i = 0; i < saveButtonDOMs.length; i++) {
