@@ -80,25 +80,28 @@
             <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
             <td>{{company}}</td>
             <td>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" id="status-choice-{{id}}"
+                                    aria-label="Default select example">
                     <option selected>{{status}}</option>
-                    <option value="1">Applied Online</option>
-                    <option value="2">Interviewing</option>
-                    <option value="3">Rejected</option>
-                    <option value="4">Offer Recieved</option>
-                    <option value="5">Accepted Offer</option>
-                    <option value="6">Reject Offer</option>
+                    <option value="Applied Online">Applied Online</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Offer Recieved">Offer Recieved</option>
+                    <option value="Accepted Offer">Accepted Offer</option>
+                    <option value="Reject Offer">Reject Offer</option>
                 </select>
             </td>
             <td>{{format_date job_added}}</td>
-            <td scope="col"><button class="btn btn-dark signUpButton" type="button"
+            <td scope="col"><button class="btn btn-dark signUpButton" type="button" data-job-id={{id}}
                                     data-bs-primary="modal" data-bs-target="#staticBackdrop">Save</button></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<a class="button btn btn-dark" href="/newJob" id="new-job-button">Add New Job</a>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <a class="button btn btn-dark" href="/newJob" id="new-job-button">Add New Job</a>
             </div>
         </div>
     </div>
 </div>
+
+<script src="./js/saveDropdown.js"></script>
