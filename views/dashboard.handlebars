@@ -3,125 +3,96 @@
         <div class="card" id="dashboardcard">
             <div class="card-body">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Job Title</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Application Status</th>
-                            <th scope="col-4">Date Job Added</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <div>
-                            <canvas id="myChart" width="400" height="400"></canvas>
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Company</th>
+            <th scope="col">Application Status</th>
+            <th scope="col-4">Date Job Added</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <div>
+            <canvas id="myChart" width="400" height="400"></canvas>
+           
+            <script>
+                
+                var jobArray = [];
+                let dtToday = new Date();
 
-                            <script>
+                {{#each jobs}}  
+                var jobObj = {
+                    jobTitle: "{{this.job_title}}",
+                    jobStatus: "{{this.status}}",
+                    company: "{{this.company}}",
+                    dtAdded: "{{this.job_added}}"
+                }
+                jobArray.push(jobObj);
+                {{/each}}
 
-                                var jobArray = [];
-                                let dtToday = new Date();
-                                console.log("this is the date today aka dtToday:", dtToday);
+                let dateAddedArray = [];
+                for (var i = 0; i < jobArray.length; i++) {
+                    dateAddedArray.push(Math.ceil(((dtToday.getTime() - (new Date(jobArray[i].dtAdded).getTime())))/ (1000 * 3600 * 24)));
+                }
+                console.log("this is my dateAddedArray: ", dateAddedArray)
+            
+                const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
+            
+                const ctx = document.getElementById('myChart');
 
-                                { {#each jobs } }
-                                var jobObj = {
-                                    jobTitle: "{{this.job_title}}",
-                                    jobStatus: "{{this.status}}",
-                                    company: "{{this.company}}",
-                                    dtAdded: "{{this.job_added}}",
-
-                                }
-                                jobArray.push(jobObj);
-                                {
-                                    {
-                                        /each}}
-
-
-                                        console.log("jobArray:", jobArray)
-                                        let dtAddedOne = new Date(jobArray[0].dtAdded);
-                                        let dtAddedTwo = new Date(jobArray[1].dtAdded);
-                                        let dtAddedThree = new Date(jobArray[2].dtAdded);
-
-                                        console.log("this is date added for first job:", dtAddedOne)
-                                        console.log("this is date added for third job:", dtAddedThree)
-
-
-                                        let diffTimeOne = dtToday.getDate() - dtAddedOne.getDate();
-                                        let diffTimeTwo = dtToday.getDate() - dtAddedOne.getDate();
-                                        let diffTimeThree = dtToday.getDate() - dtAddedOne.getDate();
-                                        console.log("this is the difference in days:", diffTimeOne)
-                                        console.log("this is the difference in days:", diffTimeTwo)
-                                        console.log("this is the difference in days:", diffTimeThree)
-
-                                        let dtAddedArray = [];
-                                        dtAddedArray.push(diffTimeOne, diffTimeTwo, diffTimeThree)
-                                        console.log("this is dtAddedArry:", dtAddedArray)
-
-                                        const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
-                                        const ids = jobArray.map((jobId) => (jobId.id))
-                                        { { !-- const dateDiff = jobArray.map((jobD) => (jobD.diffDays))-- } }
-                                        { { !--console.log("dtAdded", dtAdded) --} }
-
-                                        const ctx = document.getElementById('myChart');
-
-                                        const myChart = new Chart(ctx, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: jobTitles,
-                                                datasets: [{
-                                                    label: 'Number of Days since I applied',
-                                                    data: dtAddedArray,
-                                                    backgroundColor: [
-                                                        'rgba(255, 99, 132, 0.2)',
-                                                        'rgba(54, 162, 235, 0.2)',
-                                                        'rgba(255, 206, 86, 0.2)',
-                                                        'rgba(75, 192, 192, 0.2)',
-                                                        'rgba(153, 102, 255, 0.2)',
-                                                        'rgba(255, 159, 64, 0.2)'
-                                                    ],
-                                                    borderColor: [
-                                                        'rgba(255, 99, 132, 1)',
-                                                        'rgba(54, 162, 235, 1)',
-                                                        'rgba(255, 206, 86, 1)',
-                                                        'rgba(75, 192, 192, 1)',
-                                                        'rgba(153, 102, 255, 1)',
-                                                        'rgba(255, 159, 64, 1)'
-                                                    ],
-                                                    borderWidth: 1
-                                                }]
-                                            },
-                                            options: {
-                                                scales: {
-                                                    y: {
-
-                                                    }
-                                                }
-                                            }
-                                        });
-                            </script>
-
-                        </div>
-                        </br>
-                        </br>
-                        {{#each jobs as |job|}}
-                        <tr>
-                            <th scope="row"></th>
-                            <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
-                            <td>{{company}}</td>
-                            <td>
-                                <select class="form-select" id="status-choice-{{id}}"
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: jobTitles,
+                        datasets: [{
+                            label: 'Number of Days since I applied',
+                            data: dateAddedArray,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+            </script>
+            
+        </div>
+        </br>
+        </br>
+        {{#each jobs as |job|}}
+        <tr>
+            <th scope="row"></th>
+            <td><a href="./jobs/{{id}}">{{job_title}}</a></td>
+            <td>{{company}}</td>
+            <td>
+                <select class="form-select" id="status-choice-{{id}}"
                                     aria-label="Default select example">
-                                    <option selected>{{status}}</option>
-                                    <option value="Applied Online">Applied Online</option>
-                                    <option value="Interviewing">Interviewing</option>
-                                    <option value="Rejected">Rejected</option>
-                                    <option value="Offer Recieved">Offer Recieved</option>
-                                    <option value="Accepted Offer">Accepted Offer</option>
-                                    <option value="Reject Offer">Reject Offer</option>
-                                </select>
-                            </td>
-                            <td>{{format_date job_added}}</td>
-                            <td scope="col"><button class="btn btn-dark saveButton" type="button" data-job-id={{id}}
+                    <option selected>{{status}}</option>
+                    <option value="Applied Online">Applied Online</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Offer Recieved">Offer Recieved</option>
+                    <option value="Accepted Offer">Accepted Offer</option>
+                    <option value="Reject Offer">Reject Offer</option>
+                </select>
+            </td>
+            <td>{{format_date job_added}}</td>
+            <td scope="col"><button class="btn btn-dark signUpButton" type="button" data-job-id={{id}}
                                     data-bs-primary="modal" data-bs-target="#staticBackdrop">Save</button></td>
                         </tr>
                         {{/each}}
