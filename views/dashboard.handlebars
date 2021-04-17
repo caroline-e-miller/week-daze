@@ -22,7 +22,7 @@
                                 var jobArray = [];
                                 let dtToday = new Date();
 
-                                { {#each jobs } }
+                                {{#each jobs}}
                                 var jobObj = {
                                     jobTitle: "{{this.job_title}}",
                                     jobStatus: "{{this.status}}",
@@ -30,9 +30,7 @@
                                     dtAdded: "{{this.job_added}}"
                                 }
                                 jobArray.push(jobObj);
-                                {
-                                    {
-                                        /each}}
+                                {{/each}}
 
                                         let dateAddedArray = [];
                                         for (var i = 0; i < jobArray.length; i++) {
