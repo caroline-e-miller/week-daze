@@ -21,44 +21,24 @@
                 
                 var jobArray = [];
                 let dtToday = new Date();
-                console.log("this is the date today aka dtToday:", dtToday);
 
                 {{#each jobs}}  
                 var jobObj = {
                     jobTitle: "{{this.job_title}}",
                     jobStatus: "{{this.status}}",
                     company: "{{this.company}}",
-                    dtAdded: "{{this.job_added}}",
-                    
+                    dtAdded: "{{this.job_added}}"
                 }
                 jobArray.push(jobObj);
                 {{/each}}
-                
-                
-                console.log("jobArray:", jobArray)
-                let dtAddedOne = new Date(jobArray[0].dtAdded);
-                let dtAddedTwo = new Date(jobArray[1].dtAdded);
-                let dtAddedThree = new Date(jobArray[2].dtAdded);
-                
-                console.log("this is date added for first job:", dtAddedOne)
-                console.log("this is date added for third job:", dtAddedThree)
-                
-                
-                let diffTimeOne = dtToday.getDate() - dtAddedOne.getDate();
-                let diffTimeTwo = dtToday.getDate() - dtAddedTwo.getDate();
-                let diffTimeThree = dtToday.getDate() - dtAddedThree.getDate();
-                console.log("this is the difference in days:", diffTimeOne)
-                console.log("this is the difference in days:", diffTimeTwo)
-                console.log("this is the difference in days:", diffTimeThree)
 
-                let dtAddedArray = [];
-                dtAddedArray.push(diffTimeOne, diffTimeTwo, diffTimeThree)
-                console.log("this is dtAddedArry:", dtAddedArray)
+                let dateAddedArray = [];
+                for (var i = 0; i < jobArray.length; i++) {
+                    dateAddedArray.push(Math.ceil(((dtToday.getTime() - (new Date(jobArray[i].dtAdded).getTime())))/ (1000 * 3600 * 24)));
+                }
+                console.log("this is my dateAddedArray: ", dateAddedArray)
             
                 const jobTitles = jobArray.map((jobT) => (jobT.jobTitle))
-                const ids = jobArray.map((jobId) => (jobId.id))
-                {{!-- const dateDiff = jobArray.map((jobD) => (jobD.diffDays)) --}}
-                {{!-- console.log("dtAdded", dtAdded) --}}
             
                 const ctx = document.getElementById('myChart');
 
@@ -68,7 +48,7 @@
                         labels: jobTitles,
                         datasets: [{
                             label: 'Number of Days since I applied',
-                            data: dtAddedArray,
+                            data: dateAddedArray,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
@@ -87,13 +67,6 @@
                             ],
                             borderWidth: 1
                         }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                
-                            }
-                        }
                     }
                 });
             </script>
