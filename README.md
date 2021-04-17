@@ -9,6 +9,7 @@
  6. [Deployed-Links](#deployed-links)
  7. [Screenshots](#screenshots)
 
+
 ### Description
 
 Our application is designed to give the user the experience of organizing, managing, and updating their job search.
