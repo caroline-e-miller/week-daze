@@ -3,12 +3,12 @@ const addNewJob = async (event) => {
     const title = document.querySelector('#job-title-input').value.trim();
     const company = document.querySelector('#company-input').value.trim();
     const status = document.querySelector('#status-input').value.trim();
-  
+    const job_added = document.querySelector('#date2-input').value.trim();
     if (title && company && status) {
         // Send the e-mail and password to the server
         const response = await fetch('/api/jobs/', {
           method: 'POST',
-          body: JSON.stringify({ title, company, status }),
+          body: JSON.stringify({ title, company, status, job_added }),
           headers: { 'Content-Type': 'application/json' },
         });
     
